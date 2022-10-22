@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99F1F1F1"
+    tools:context=".ui.HomeFragment">
+
+
+    <com.github.badoualy.datepicker.DatePickerTimeline
+        android:id="@+id/datePickerTimeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:elevation="0dp"
+
+        android:gravity="top"
+        app:layout_constraintBottom_toTopOf="@id/medication_recyclerview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:mti_bgLblDateSelectedColor="#4CAF50"
+        app:mti_lblDateColor="#4CAF50"
+        app:mti_lblLabelColor="#4CAF50"
+        app:mti_primaryColor="@color/white"
+        app:mti_primaryDarkColor="@color/colorAccent"
+        app:mti_tabBeforeSelectionColor="@color/colorAccent"
+        app:mti_tabSelectedColor="#4CAF50"
+        tools:ignore="NotSibling">
+
+    </com.github.badoualy.datepicker.DatePickerTimeline>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="408dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerTimeline">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/medication_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

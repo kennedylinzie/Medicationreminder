@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".emergency.emergency_call">
+
+    <RelativeLayout
+        android:id="@+id/em_alarm_holder"
+        android:layout_width="367dp"
+        android:layout_height="219dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginBottom="266dp"
+        android:background="@drawable/buttoshape"
+        android:elevation="2dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/diag_drug_take"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginBottom="11dp"
+            android:onClick="yes"
+            android:text="YES"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/diag_drug_take2"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="29dp"
+            android:layout_marginEnd="262dp"
+            android:layout_marginBottom="11dp"
+            android:onClick="no"
+            android:text="NO"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="349dp"
+            android:layout_height="103dp"
+            android:layout_above="@+id/al_man_alarm"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-171dp"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_toEndOf="@+id/em_alarm"
+            android:text="Are you attempting to call emergency services? No response will assume you cant respond and call anyway"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="143dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="-171dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="228dp"
+            android:layout_toEndOf="@+id/em_alarm"
+            android:fontFamily="@font/robotoregular"
+            android:text="Hello"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/em_counter"
+            android:layout_width="51dp"
+            android:layout_height="51dp"
+            android:layout_above="@+id/diag_drug_take2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="131dp"
+            android:layout_marginBottom="-50dp"
+            android:layout_toEndOf="@+id/em_alarm"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/em_alarm"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/diag_drug_take2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="-49dp"
+            app:srcCompat="@drawable/ic_baseline_alarm_24" />
+
+        <ImageView
+            android:id="@+id/al_man_alarm2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/diag_drug_take2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="314dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="134dp"
+            app:srcCompat="@drawable/ic_baseline_sick_24" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
