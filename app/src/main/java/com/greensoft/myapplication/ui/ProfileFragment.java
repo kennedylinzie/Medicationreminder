@@ -99,6 +99,8 @@ public class ProfileFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         man_fred(getContext());
 
+
+
         return view;
     }
 

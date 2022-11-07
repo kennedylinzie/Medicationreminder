@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FCFCFF"
     tools:context=".emergency.emergency_call">
 
     <RelativeLayout
@@ -121,5 +122,20 @@
             app:srcCompat="@drawable/ic_baseline_sick_24" />
 
     </RelativeLayout>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/imageView5"
+        android:layout_width="164dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="124dp"
+        android:src="@drawable/emrgency_giffy"
+        app:layout_constraintBottom_toTopOf="@+id/em_alarm_holder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

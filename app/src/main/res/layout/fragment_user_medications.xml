@@ -22,12 +22,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.26">
 
-        <ImageView
+        <pl.droidsonroids.gif.GifImageView
             android:id="@+id/med_tab_drug_image"
             android:layout_width="197dp"
             android:layout_height="156dp"
-            android:src="@drawable/medication"
-            tools:layout_editor_absoluteY="-13dp" />
+            android:src="@drawable/drug_show_giffy"
+            tools:layout_editor_absoluteY="-13dp"
+            tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -56,7 +56,7 @@ import java.util.List;
 public class Add_medication extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private  Spinner presription_spinner,strength_spinner;
-    private  String[] prescription_intake = {"Daily","2 Times a day","3 Times a day","4 Times a day"};
+    private  String[] prescription_intake = {"Daily","2 Times a day","3 Times a day","4 Times a day","5 Times a day"};
     private  String[] pres_script_strength = {"g","iu","mcg","m"};
     private RadioGroup radioGroup;
     private RadioButton radiobtn_yes,radiobtn_no;

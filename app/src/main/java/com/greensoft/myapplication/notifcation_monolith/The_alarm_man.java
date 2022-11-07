@@ -70,7 +70,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
         diag_skip.setOnClickListener(this);
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         permission();
-        sendmessage();
+
         YoYo.with(Techniques.BounceInUp)
                 .duration(2000)
                 .playOn(findViewById(R.id.the_alarm_holder));
@@ -129,7 +129,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
                 sinle_role_notification_Adapter sinlerolenotificationAdapter = new sinle_role_notification_Adapter(obj);
                 recyclerView.setAdapter(sinlerolenotificationAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-
+                sendmessage();
 
 
 
@@ -190,7 +190,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
             }
 
             stopService(serviceIntent);
-
+            Context_maker.getInstance().setTrap_counter(0);
             Intent openActivity = new Intent(The_alarm_man.this, MainActivity.class);
             startActivity(openActivity);
             finish();
@@ -208,14 +208,13 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
                 mn.change_skipped_status(tasks.get(i).getMedicationName(),tasks.get(i).getId(),d);
             }
             stopService(serviceIntent);
+            Context_maker.getInstance().setTrap_counter(0);
             Intent openActivity = new Intent(The_alarm_man.this, MainActivity.class);
             startActivity(openActivity);
             finish();
         }
 
     }
-
-
 
 
 
@@ -230,7 +229,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
                 // 'this' is referencing the Runnable object
                 textToSpeech.speak(first_string +""+second_string,TextToSpeech.QUEUE_FLUSH,null,null);
                 handler_speech.postDelayed(this, 10000);
-               handler_speech.removeCallbacks(runnableCode_speech);
+                handler_speech.removeCallbacks(runnableCode_speech);
                 textToSpeech.stop();
                 textToSpeech.shutdown();
             }
@@ -263,7 +262,9 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
         {
             //when permission is granted
             //create method
-            send_sms();
+                //send_sms();
+
+
 
         }else {
             //when permission is granted

@@ -19,11 +19,14 @@ import com.greensoft.myapplication.Context_maker;
 import com.greensoft.myapplication.Medication;
 import com.greensoft.myapplication.MedicationAdapter;
 import com.greensoft.myapplication.R;
+import com.greensoft.myapplication.jsony.shared_persistence;
 
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+
+import pl.droidsonroids.gif.GifImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +40,7 @@ public class HomeFragment extends Fragment {
     //the recyclerview
     private RecyclerView recyclerView;
     private MedicationAdapter recyclerAdapter;
-
+    private GifImageView thecalender_gif;
     public List<Medication> getZooma() {
         return zooma;
     }
@@ -101,6 +104,22 @@ public class HomeFragment extends Fragment {
         LocalTime my_time = LocalTime.now();
         LocalDate my_date = LocalDate.now();
         timeline = view.findViewById(R.id.datePickerTimeline);
+        thecalender_gif = view.findViewById(R.id.thecalender);
+        shared_persistence  shad = new shared_persistence();
+
+        String nam = null;
+        try {
+            nam = shad.get_json(getContext());
+        } catch (Exception e) {
+
+        }
+
+        if(nam == null || nam.equals("[]")){
+            thecalender_gif.setVisibility(View.VISIBLE);
+        }else{
+            thecalender_gif.setVisibility(View.GONE);
+        }
+
 
 
         timeline.setFirstVisibleDate(my_date.getYear(), my_date.getMonthValue()-1, my_date.getDayOfMonth());

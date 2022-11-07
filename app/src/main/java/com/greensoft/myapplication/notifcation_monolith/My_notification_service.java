@@ -56,8 +56,9 @@ public class My_notification_service extends JobService {
                         return;
                     }
                     try {
+
                         increment();
-                        Thread.sleep(1000);
+                        Thread.sleep(5000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -207,10 +208,12 @@ public class My_notification_service extends JobService {
                                         if(gateman_before){
                                             Context_maker.getInstance().setBlocked_with_wall2(true);
                                             Context_maker.getInstance().setCars(cars);
-
-                                            Intent intent_diag = new Intent(getApplicationContext(), The_alarm_man.class);
-                                            intent_diag.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(intent_diag);
+                                            if(Context_maker.getInstance().getTrap_counter() == 0) {
+                                                Context_maker.getInstance().setTrap_counter(Context_maker.getInstance().getTrap_counter()+1);
+                                                Intent intent_diag = new Intent(getApplicationContext(), The_alarm_man.class);
+                                                intent_diag.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent_diag);
+                                            }
                                             gateman_before  = false;
                                         }
                                         setTrywall_before(false);

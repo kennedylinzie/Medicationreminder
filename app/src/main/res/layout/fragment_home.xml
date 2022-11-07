@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#99F1F1F1"
+    android:background="#99FFFFFF"
     tools:context=".ui.HomeFragment">
 
 
@@ -38,6 +38,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="408dp"
         android:layout_height="0dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +58,19 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/thecalender"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#fff"
+        android:src="@drawable/calender_giffy"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePickerTimeline" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

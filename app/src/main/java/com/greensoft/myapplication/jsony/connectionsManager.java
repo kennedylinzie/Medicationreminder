@@ -34,11 +34,16 @@ public class connectionsManager {
     private final String patient_update_accounts =                 locallink +"/MR/v2/Api.php?apicall=Update_user";
     private final String patient_change_password =                 locallink +"/MR/v2/Api.php?apicall=Update_password";
     private final String patient_data_pull =                       locallink +"/MR/v2/Api.php?apicall=pullUserData";
-    private final String adding_guards =      locallink +"/MR/v2/Api.php?apicall=add_gurdian";
-    private final String pull_guards =        locallink +"/MR/v2/Api.php?apicall=pullguardData";
-    private final String delete_guards =      locallink +"/MR/v2/Api.php?apicall=Delete_guard";
-    private final String check_connections =  locallink +"/MR/v2/Api.php?apicall=ping";
+    private final String adding_guards =            locallink +"/MR/v2/Api.php?apicall=add_gurdian";
+    private final String pull_guards =              locallink +"/MR/v2/Api.php?apicall=pullguardData";
+    private final String delete_guards =            locallink +"/MR/v2/Api.php?apicall=Delete_guard";
+    private final String check_connections =        locallink +"/MR/v2/Api.php?apicall=ping";
     private final String add_patient_prescription = locallink +"/MR/v2/Api.php?apicall=add_prescription";
+    private final String patient_login_ver =        locallink +"/MR/v2/Api.php?apicall=login_verified";
+
+    public String getPatient_login_ver() {
+        return patient_login_ver;
+    }
 
     public String getAdd_patient_prescription() {
         return add_patient_prescription;

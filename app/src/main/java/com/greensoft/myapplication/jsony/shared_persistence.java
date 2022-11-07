@@ -34,6 +34,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.greensoft.myapplication.Context_maker;
 import com.greensoft.myapplication.Gurdian;
+import com.greensoft.myapplication.Lobby;
+import com.greensoft.myapplication.notifcation_monolith.The_alarm_man;
 import com.greensoft.myapplication.user_register_activity;
 
 import org.json.JSONException;
@@ -180,6 +182,11 @@ public class shared_persistence {
                         ,Bloodpressure,Email,Phone_number,Existing_illness,Location,Prescription,
                          Verified,Latitude,Longitude);
                         pref_manager.save_json(context,Prescription);
+
+                        Intent intent_diag = new Intent(context, Lobby.class);
+                        intent_diag.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        context.startActivity(intent_diag);
+
 
 
                     }else {

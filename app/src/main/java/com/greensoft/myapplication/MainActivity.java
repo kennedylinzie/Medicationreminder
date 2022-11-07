@@ -42,6 +42,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -117,6 +118,12 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
+//        Intent in = new Intent(this,Flash_screen.class);
+//        startActivity(in);
+
+
+
+
          ///should always be at the top checks user login status
         shared_persistence shad = new shared_persistence();
         shad.get_user_data(getApplicationContext());
@@ -158,7 +165,19 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
 
+//        YoYo.with(Techniques.BounceInDown)
+//                .duration(2000)
+//                .playOn(findViewById(R.id.top_appbar));
 
+        YoYo.with(Techniques.BounceInUp)
+                .duration(2000)
+                .playOn(findViewById(R.id.adid));
+        YoYo.with(Techniques.BounceIn)
+                .duration(2000)
+                .playOn(findViewById(R.id.emergency));
+        YoYo.with(Techniques.BounceInLeft)
+                .duration(2000)
+                .playOn(findViewById(R.id.adid));
 
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -222,7 +241,12 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                 }
 
                 foregroundServicesRunning();
+         shared_persistence shud = new shared_persistence();
+         shud.get_user_data(getApplicationContext());
+         String em = shud.getEmail();
+         String pas = shud.getPassword();
 
+        Context_maker.getInstance().check_verified(shud.getEmail(),shud.getFirst_name());
 
 
         //appInitialization();
@@ -233,6 +257,12 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
         //* stop.setOnClickListener(this);*/
 
         // showBottomSheet();
+
+        DrawerLayout navigationView_ = (DrawerLayout) findViewById(R.id.drawer_layout);
+        NavigationView navigationView1 = navigationView_.findViewById(R.id.navigation_view);
+        View headerView = navigationView1.getHeaderView(0);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.user_name);
+        navUsername.setText(shad.getFirst_name() +" "+shad.getLast_name());
 
 
         btnPopup = findViewById(R.id.adid);
@@ -248,6 +278,8 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
         toolbar.setNavigationOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
       /*  TextView name = findViewById(R.id.user_name);
         name.setText("ooooooooooooo");*/
+
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -291,6 +323,8 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                                                 {
                                                     shad.clear_json(getApplicationContext());
                                                     shad.clear_user(getApplicationContext());
+                                                    shad.clear_json_user_prep(getApplicationContext());
+                                                    shad.clear_emergency_number(getApplicationContext());
                                                     goto_login();
                                                     dialog.dismiss();
 
@@ -321,6 +355,8 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                                         shared_persistence shad = new shared_persistence();
                                         shad.clear_json(getApplicationContext());
                                         shad.clear_user(getApplicationContext());
+                                        shad.clear_json_user_prep(getApplicationContext());
+                                        shad.clear_emergency_number(getApplicationContext());
                                         goto_login();
                                         dialog.dismiss();
                                     }
@@ -363,6 +399,21 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
 
 
     }
+
+//    @Override
+//    public boolean onPrepareOptionsMenu(Menu menu) {
+//        MenuItem item = menu.findItem(R.id.user_name);
+//
+//        if (item.getTitle().equals("Set to 'In bed'")) {
+//            item.setTitle("Set to 'Out of bed'");
+//           // inBed = false;
+//        } else {
+//            item.setTitle("Set to 'In bed'");
+//           // inBed = true;
+//        }
+//        return super.onPrepareOptionsMenu(menu);
+//    }
+
  /*   @Override
     public void onUserInteraction() {
         alertDialog_TROUBLE.dismiss();

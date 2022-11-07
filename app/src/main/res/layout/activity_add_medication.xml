@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FEFFFE"
+    android:background="#FCFCFF"
     android:orientation="horizontal"
 
     tools:context=".Add_medication">
@@ -25,29 +25,20 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
                 android:fontFamily="@font/montserratregular"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
                 android:text="Add Prescription"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display4"
                 android:textColor="#858484"
                 android:textSize="25sp"
                 android:typeface="normal" />
 
-
-            <TextView
-                android:id="@+id/add_meds_counter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="0dp"
-                android:fontFamily="@font/montserratregular"
-                android:paddingTop="0dp"
-                android:paddingBottom="10dp"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Display4"
-                android:textColor="#FF5722"
-                android:textSize="20sp"
-                android:typeface="normal" />
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/drug_show_giffy" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
