@@ -313,9 +313,12 @@ public class Add_medication extends AppCompatActivity implements AdapterView.OnI
         shared_persistence shad = new shared_persistence();
         String output = shad.get_json(getApplicationContext());
         Gson gson = new Gson();
-
+        if(output.equals("None")){
+            output = "[]";
+        }
         Type foundlistType = new TypeToken<ArrayList<Patient>>(){}.getType();
         generalInfoObject = gson.fromJson(output, foundlistType);
+
 
         if(output.equals("[]"))
         {
@@ -351,7 +354,7 @@ if(generalInfoObject != null)
                 save_medication.setContext(getApplicationContext());
                 save_medication.add_meds();
 
-                downCounter.setText("The window will close in : " + downer);
+               // downCounter.setText("The window will close in : " + downer);
                 YoYo.with(Techniques.Bounce)
                         .duration(2000)
                         .playOn(findViewById(R.id.add_meds_counter));

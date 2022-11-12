@@ -285,6 +285,9 @@ public class Main_save_meds  {
         generalInfoObject =null;
         shared_persistence shad = new shared_persistence();
         String output = shad.get_json(getContext());
+        if(output.equals("None")){
+            output="";
+        }
         Gson gson = new Gson();
         Type foundlistType = new TypeToken<ArrayList<Patient>>(){}.getType();
         generalInfoObject = gson.fromJson(output, foundlistType);

@@ -42,8 +42,6 @@ public class Gurdian {
     }
     public Gurdian() {
 
-
-
     }
 
     public void delete(Context context,String name){

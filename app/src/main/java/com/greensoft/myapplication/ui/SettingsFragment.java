@@ -177,9 +177,14 @@ public class SettingsFragment extends Fragment {
         generalInfoObject =null;
         shared_persistence shad = new shared_persistence();
         String output = shad.get_json(getContext());
-        Gson gson = new Gson();
-        Type foundlistType = new TypeToken<ArrayList<Patient>>(){}.getType();
-        generalInfoObject = gson.fromJson(output, foundlistType);
+        if(output.equals("None")){
+
+        }else {
+            Gson gson = new Gson();
+            Type foundlistType = new TypeToken<ArrayList<Patient>>(){}.getType();
+            generalInfoObject = gson.fromJson(output, foundlistType);
+        }
+
 
       /*List<String> name = new ArrayList<>();
 

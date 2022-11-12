@@ -97,11 +97,18 @@ public class My_notification_service extends JobService {
         generalInfoObject = null;
         shared_persistence shad = new shared_persistence();
         String output = shad.get_json(getApplicationContext());
+        if(output.equals("None")){
+          return;
+        }
         Gson gson = new Gson();
         Type foundlistType = new TypeToken<ArrayList<Patient>>() {
         }.getType();
+
         generalInfoObject = gson.fromJson(output, foundlistType);
         LinkedList<Dosage_saver_for_alarm_activity> cars = new LinkedList<Dosage_saver_for_alarm_activity>();
+
+
+
         if (isTrywall() == false) {
 
             if (generalInfoObject != null) {
@@ -112,14 +119,15 @@ public class My_notification_service extends JobService {
                         ////////////////////////////
 
 
-                        //String date = "30-06-2022";
+
                         // String time = "23:53:00";
                         String date = dss.getmDosage().get(i).getDateTaken();
                         String time = dss.getmDosage().get(i).getTimeTaken();
-
+                        //String date = "30-06-2022";
                         int year = Integer.parseInt(date.substring(0, 4));
                         int month = Integer.parseInt(date.substring(5, 7));
                         int date_ = Integer.parseInt(date.substring(8, 10));
+                        //String date = "30-06-2022";
                         int hour = Integer.parseInt(time.substring(0, 2));
                         int minute = Integer.parseInt(time.substring(3, 5));
                         int seconds = Integer.parseInt(time.substring(6, 8));
@@ -128,8 +136,10 @@ public class My_notification_service extends JobService {
                         LocalDateTime date1 = LocalDateTime.now();
                         LocalDateTime date2 = LocalDateTime.of(year, month, date_, hour, minute, seconds,00);
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
                         String formatDateTime1 = date1.format(formatter);
                         String formatDateTime2 = date2.format(formatter);
+
                         String now_time = formatDateTime1.substring(0, 16);
                         String later_time = formatDateTime2.substring(0, 16);
                         if (now_time.equals(later_time) && !(Context_maker.getInstance().isBlocked_with_wall())) {

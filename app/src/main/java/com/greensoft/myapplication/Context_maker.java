@@ -41,7 +41,7 @@ public class Context_maker {
     public boolean ready_for_call;
     public boolean ready_for_recovery;
     public int trap_counter=0;
-    connectionsManager conman = new connectionsManager();
+
     private String et_drugname_rec;
     private String et_at_atime_rec;
     private String et_totaldrugs_rec;
@@ -54,6 +54,8 @@ public class Context_maker {
     private boolean blocked_with_wall = false;
     private boolean blocked_with_wall2 = false;
     private boolean inlobyy =false;
+    connectionsManager conman = new connectionsManager();
+
 
     public boolean isInlobyy() {
         return inlobyy;

@@ -5,6 +5,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import com.greensoft.myapplication.jsony.Patient;
 import com.greensoft.myapplication.jsony.shared_persistence;
@@ -199,8 +200,13 @@ public class Medication implements Comparable {
         String output = shad.get_json(Context_maker.getInstance().getMyContext());
         Gson gson = new Gson();
 
-        Type foundlistType = new TypeToken<ArrayList<Patient>>(){}.getType();
-        generalInfoObject = gson.fromJson(output, foundlistType);
+
+        try {
+            Type foundlistType = new TypeToken<ArrayList<Patient>>(){}.getType();
+            generalInfoObject = gson.fromJson(output, foundlistType);
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+        }
 
         //initializing the productlist
         productList = new ArrayList<>();
