@@ -183,6 +183,8 @@ public class shared_persistence {
                          Verified,Latitude,Longitude);
                         pref_manager.save_json(context,Prescription);
 
+
+
                         Intent intent_diag = new Intent(context, Lobby.class);
                         intent_diag.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         context.startActivity(intent_diag);

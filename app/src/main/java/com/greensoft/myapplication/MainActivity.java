@@ -51,6 +51,7 @@ import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.greensoft.myapplication.databinding.ActivityMainBinding;
@@ -73,6 +74,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 //this will be accessible when the the below is addes to gradle only
@@ -282,6 +286,7 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -289,23 +294,70 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                 drawerLayout.closeDrawer(GravityCompat.START);
 
                 switch (id) {
+                    case R.id.nav_share:
+                        Toast.makeText(Context_maker.getInstance().getMyContext(), "share was clicked", Toast.LENGTH_SHORT).show();
+
+                        AlertDialog alertDialog_ = new AlertDialog.Builder(MainActivity.this).create(); //Use context
+                        alertDialog_.setTitle("Backup");
+                        alertDialog_.setMessage("The backup will be able to be viewed by the Company,but your privacy will be respected and wont be shared");
+                        alertDialog_.setIcon(R.drawable.backup);
+
+                        alertDialog_.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog_.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        shared_persistence shad = new shared_persistence();
+                                        if(!shad.get_json(getApplicationContext()).isEmpty())
+                                        {
+                                            shad.patient_backup_prescription(getApplicationContext());
+                                        }else {
+                                            Toast.makeText(MainActivity.this, "No data to backup", Toast.LENGTH_SHORT).show();
+                                        }
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog_.show();
+                        break;
                     case R.id.nav_manage_account:
                        // Toast.makeText(MainActivity.this, "profile was clicked", Toast.LENGTH_SHORT).show();
                         Intent goto_account = new Intent(MainActivity.this,user_update.class);
                         startActivity(goto_account);
                         finish();
                         break;
-                    case R.id.nav_settings:
-                        Toast.makeText(MainActivity.this, "settings was clicked", Toast.LENGTH_SHORT).show();
+                    case R.id.nav_download_backup:
+                        AlertDialog alertDialog_up = new AlertDialog.Builder(MainActivity.this).create(); //Use context
+                        alertDialog_up.setTitle("Download backup");
+                        alertDialog_up.setMessage("If you have an existing medication backup,this will restore it.");
+                        alertDialog_up.setIcon(R.drawable.ic_baseline_cloud_download_24);
+
+                        alertDialog_up.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog_up.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog_up.show();
                         break;
                     case R.id.nav_logout:
                         //Toast.makeText(MainActivity.this, "login was clicked", Toast.LENGTH_SHORT).show();
                         ///////////////
 
                         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create(); //Use context
-                        alertDialog.setTitle("Hello");
-                        alertDialog.setMessage("Be aware you will lose your prescription data if logged out, if you didn't backup. CONTINUE?");
-                        alertDialog.setIcon(R.drawable.pill);
+                        alertDialog.setTitle("Logout");
+                        alertDialog.setMessage("Be aware you will lose your prescription data, if you didn't backup. CONTINUE?");
+                        alertDialog.setIcon(R.drawable.logsout);
 
                         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Backup and log out",
                                 new DialogInterface.OnClickListener() {
@@ -366,9 +418,7 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                         ///////////
                         break;
 
-                    case R.id.nav_share:
-                        Toast.makeText(MainActivity.this, "share was clicked", Toast.LENGTH_SHORT).show();
-                        break;
+
                 }
 
                 return true;
