@@ -124,12 +124,15 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
         replaceFragment(new HomeFragment());
 //        Intent in = new Intent(this,Flash_screen.class);
 //        startActivity(in);
-
-
+          shared_persistence shad = new shared_persistence();
+//        shad.clear_json(getApplicationContext());
+//        shad.clear_user(getApplicationContext());
+//        shad.clear_json_user_prep(getApplicationContext());
+//        shad.clear_emergency_number(getApplicationContext());
 
 
          ///should always be at the top checks user login status
-        shared_persistence shad = new shared_persistence();
+       // shared_persistence shad = new shared_persistence();
         shad.get_user_data(getApplicationContext());
         alarmManager = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
 
@@ -182,6 +185,8 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
         YoYo.with(Techniques.BounceInLeft)
                 .duration(2000)
                 .playOn(findViewById(R.id.adid));
+
+
 
 
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -315,6 +320,7 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                                         if(!shad.get_json(getApplicationContext()).isEmpty())
                                         {
                                             shad.patient_backup_prescription(getApplicationContext());
+                                            Toast.makeText(MainActivity.this, "Upload successful", Toast.LENGTH_SHORT).show();
                                         }else {
                                             Toast.makeText(MainActivity.this, "No data to backup", Toast.LENGTH_SHORT).show();
                                         }
@@ -331,7 +337,7 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                         break;
                     case R.id.nav_download_backup:
                         AlertDialog alertDialog_up = new AlertDialog.Builder(MainActivity.this).create(); //Use context
-                        alertDialog_up.setTitle("Download backup");
+                        alertDialog_up.setTitle("Restore backup");
                         alertDialog_up.setMessage("If you have an existing medication backup,this will restore it.");
                         alertDialog_up.setIcon(R.drawable.ic_baseline_cloud_download_24);
 
@@ -344,6 +350,11 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                         alertDialog_up.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
+
+                                        shared_persistence shad = new shared_persistence();
+                                        shad.get_user_data(getApplicationContext());
+                                        shad.patient_recover(getApplicationContext(),shad.getUU_ID());
+                                        recreate();
 
                                         dialog.dismiss();
                                     }
@@ -379,7 +390,7 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                                                     shad.clear_emergency_number(getApplicationContext());
                                                     goto_login();
                                                     dialog.dismiss();
-
+                                                    Toast.makeText(MainActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                                                 }else if(!Context_maker.getInstance().isPrescription_backup_success()){
                                                     Toast.makeText(MainActivity.this, "unable to contact server,make sure you have internet", Toast.LENGTH_LONG).show();
                                                 }

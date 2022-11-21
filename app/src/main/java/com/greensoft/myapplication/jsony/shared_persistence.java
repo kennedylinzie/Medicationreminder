@@ -63,6 +63,7 @@ public class shared_persistence {
     private float Longitude;
     private boolean login_success;
     private String password;
+    private String membership;
 
     public void patient_register(Context context) {
 
@@ -128,10 +129,10 @@ public class shared_persistence {
                 params.put("Existing_illness",getExisting_illness());
                 params.put("Location",getLocation());
                 params.put("Password",getPassword());
-                params.put("Prescription",getPrescription());
                 params.put("Latitude",getLatitude()+"");
                 params.put("Longitude",getLongitude()+"");
                 params.put("Email",getEmail());
+                params.put("Membership_number",getMembership());
 
                 return params;
             }
@@ -141,6 +142,123 @@ public class shared_persistence {
 
 
     }
+
+    public void patient_recover(Context context,int membership) {
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, conman.getPatient_recover(), new Response.Listener<String>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String message = jsonObject.getString("message");
+                    String status = jsonObject.getString("status");
+
+                    if(status.equals("success"))
+                    {
+                        Context_maker.getInstance().setLogin_success(true);
+                        // Toast.makeText(context, "successsfull", Toast.LENGTH_SHORT).show();
+                        int UU_ID = Integer.parseInt(jsonObject.getString("UU_ID"));
+                        String First_name =jsonObject.getString("First_name");
+                        String Last_name =jsonObject.getString("Last_name");
+                        int Age = Integer.parseInt(jsonObject.getString("Age"));
+                        float Weight = Float.parseFloat( jsonObject.getString("Weight"));
+                        float Bloodpressure = Float.parseFloat(jsonObject.getString("Bloodpressure"));
+                        String Email =jsonObject.getString("Email");
+                        String Phone_number =jsonObject.getString("Phone_number");
+                        String Existing_illness =jsonObject.getString("Existing_illness");
+                        String Location =jsonObject.getString("Location");
+                        String Prescription =jsonObject.getString("Prescription");
+                        String drugs =jsonObject.getString("Drugs");
+                        int Verified = Integer.parseInt(jsonObject.getString("Verified"));
+                        float Latitude = Float.parseFloat( jsonObject.getString("Latitude"));
+                        float Longitude = Float.parseFloat( jsonObject.getString("Longitude"));
+
+                        // Creating a StringBuffer object
+                        StringBuffer sb = new StringBuffer(Prescription);
+
+                        // Removing the last character
+                        // of a string
+                        sb.delete(Prescription.length() - 1, Prescription.length());
+
+                        // Removing the first character
+                        // of a string
+                        sb.delete(0, 1);
+
+                        // Converting StringBuffer into
+                        // string & return modified string
+                        Prescription = sb.toString();
+
+
+                        // Creating a StringBuffer object..........................................
+                        StringBuffer sb_D = new StringBuffer(drugs);
+
+                        // Removing the last character
+                        // of a string
+                        sb_D.delete(drugs.length() - 1, drugs.length());
+
+                        // Removing the first character
+                        // of a string
+                        sb_D.delete(0, 1);
+
+                        // Converting StringBuffer into
+                        // string & return modified string
+                        drugs = sb_D.toString();
+
+                        shared_persistence pref_manager = new shared_persistence();
+                      //pref_manager.save_user(context,UU_ID,First_name,Last_name,Age,Weight
+//                                ,Bloodpressure,Email,Phone_number,Existing_illness,Location,Prescription,
+//                                Verified,Latitude,Longitude);
+                       pref_manager.save_json(context,Prescription);
+                        pref_manager.save_json_user_prep(context,drugs);
+                   Toast.makeText(context, "Download successful", Toast.LENGTH_LONG).show();
+//
+//
+//                        Intent intent_diag = new Intent(context, Lobby.class);
+//                        intent_diag.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        context.startActivity(intent_diag);
+
+
+
+                    }else {
+                        Toast.makeText(context,message+"",Toast.LENGTH_LONG).show();
+                        Context_maker.getInstance().setLogin_success(false);
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Context_maker.getInstance().setLogin_success(false);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(context,"" + error.getMessage(),Toast.LENGTH_SHORT).show();
+                Context_maker.getInstance().setLogin_success(false);
+            }
+        }){
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("membership_id",membership+"");
+
+                return params;
+            }
+        };
+        requestQueue.add(stringRequest);
+
+    }
+
 
     public void patient_login(Context context,String email,String password,int membership) {
 
@@ -173,6 +291,7 @@ public class shared_persistence {
                         String Existing_illness =jsonObject.getString("Existing_illness");
                         String Location =jsonObject.getString("Location");
                         String Prescription =jsonObject.getString("Prescription");
+                        String drugs =jsonObject.getString("Drugs");
                         int Verified = Integer.parseInt(jsonObject.getString("Verified"));
                         float Latitude = Float.parseFloat( jsonObject.getString("Latitude"));
                         float Longitude = Float.parseFloat( jsonObject.getString("Longitude"));
@@ -182,6 +301,7 @@ public class shared_persistence {
                         ,Bloodpressure,Email,Phone_number,Existing_illness,Location,Prescription,
                          Verified,Latitude,Longitude);
                         pref_manager.save_json(context,Prescription);
+                        pref_manager.save_json_user_prep(context,drugs);
 
 
 
@@ -272,6 +392,7 @@ public class shared_persistence {
                 Map<String, String> params = new HashMap<>();
                 params.put("UU_ID",getUU_ID()+"");
                 params.put("Prescription",get_json(context));
+                params.put("Drugs",get_json_user_prep(context));
 
                 return params;
             }
@@ -698,6 +819,13 @@ public class shared_persistence {
         this.password = password;
     }
 
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
+    }
 
     ////////////////////////////saves the emergency number
     //clears emergency number

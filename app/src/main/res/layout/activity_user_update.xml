@@ -368,7 +368,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
-                android:enabled="false"
+                android:enabled="true"
                 android:textColorHint="@color/black">
 
 
@@ -379,7 +379,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="Membership number"
-                    android:inputType="textEmailAddress"
+                    android:inputType="number"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display4"
                     android:textColor="@color/black"
                     android:textColorHint="#000000"

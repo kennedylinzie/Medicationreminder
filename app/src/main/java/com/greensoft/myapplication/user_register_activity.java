@@ -42,6 +42,7 @@ public class user_register_activity extends AppCompatActivity  {
     private EditText Longitude;
     private EditText password;
     private EditText password_again;
+    private EditText membership;
     private Button btn_save;
     private Button search_location_before, search_location_after;
     private LinearLayout man_of_view;
@@ -74,6 +75,7 @@ public class user_register_activity extends AppCompatActivity  {
         search_location_before = findViewById(R.id.search_btn_before);
         search_location_after = findViewById(R.id.search_btn_after);
         search_location_after.setVisibility(View.GONE);
+        membership = findViewById(R.id.et_reg_membership_id);
         btn_save.setEnabled(false);
         try {
             if (ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
@@ -166,6 +168,7 @@ public class user_register_activity extends AppCompatActivity  {
                 shad.setLatitude(Float.parseFloat(Latitude.getText().toString()));
                 shad.setLongitude(Float.parseFloat(Longitude.getText().toString()));
                 shad.setPassword(password.getText().toString());
+                shad.setMembership(membership.getText().toString());
                 shad.patient_register(getApplicationContext());
 
                 new Handler().postDelayed(new Runnable() {

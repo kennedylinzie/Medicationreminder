@@ -27,19 +27,24 @@ public class connectionsManager {
     private final String wifilink = "http://192.168.137.1"; //connectify or wifi defualt ip addree
 
 
-    private final String patient_login =                           locallink +"/MR/v2/Api.php?apicall=login";
-    private final String patient_register =                        locallink +"/MR/v2/Api.php?apicall=signup";
-    private final String patient_backup_prescription =             locallink +"/MR/v2/Api.php?apicall=Update_prescription";
-    private final String patient_delete_account =                  locallink +"/MR/v1/delete_account.php";
-    private final String patient_update_accounts =                 locallink +"/MR/v2/Api.php?apicall=Update_user";
-    private final String patient_change_password =                 locallink +"/MR/v2/Api.php?apicall=Update_password";
-    private final String patient_data_pull =                       locallink +"/MR/v2/Api.php?apicall=pullUserData";
-    private final String adding_guards =            locallink +"/MR/v2/Api.php?apicall=add_gurdian";
-    private final String pull_guards =              locallink +"/MR/v2/Api.php?apicall=pullguardData";
-    private final String delete_guards =            locallink +"/MR/v2/Api.php?apicall=Delete_guard";
-    private final String check_connections =        locallink +"/MR/v2/Api.php?apicall=ping";
-    private final String add_patient_prescription = locallink +"/MR/v2/Api.php?apicall=add_prescription";
-    private final String patient_login_ver =        locallink +"/MR/v2/Api.php?apicall=login_verified";
+    private final String patient_login =                   locallink +"/MR/v2/Api.php?apicall=login";
+    private final String patient_register =                locallink +"/MR/v2/Api.php?apicall=signup";
+    private final String patient_backup_prescription =     locallink +"/MR/v2/Api.php?apicall=Update_prescription";
+    private final String patient_delete_account =          locallink +"/MR/v1/delete_account.php";
+    private final String patient_update_accounts =         locallink +"/MR/v2/Api.php?apicall=Update_user";
+    private final String patient_change_password =         locallink +"/MR/v2/Api.php?apicall=Update_password";
+    private final String patient_data_pull =               locallink +"/MR/v2/Api.php?apicall=pullUserData";
+    private final String adding_guards =                   locallink +"/MR/v2/Api.php?apicall=add_gurdian";
+    private final String pull_guards =                     locallink +"/MR/v2/Api.php?apicall=pullguardData";
+    private final String delete_guards =                   locallink +"/MR/v2/Api.php?apicall=Delete_guard";
+    private final String check_connections =               locallink +"/MR/v2/Api.php?apicall=ping";
+    private final String add_patient_prescription =        locallink +"/MR/v2/Api.php?apicall=add_prescription";
+    private final String patient_login_ver =               locallink +"/MR/v2/Api.php?apicall=login_verified";
+    private final String patient_recover =                 locallink +"/MR/v2/Api.php?apicall=pullUserData_backup";
+
+    public String getPatient_recover() {
+        return patient_recover;
+    }
 
     public String getPatient_login_ver() {
         return patient_login_ver;

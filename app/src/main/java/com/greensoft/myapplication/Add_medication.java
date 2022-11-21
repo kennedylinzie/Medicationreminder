@@ -355,14 +355,14 @@ if(generalInfoObject != null)
                 save_medication.add_meds();
 
                // downCounter.setText("The window will close in : " + downer);
-                YoYo.with(Techniques.Bounce)
-                        .duration(2000)
-                        .playOn(findViewById(R.id.add_meds_counter));
+//                YoYo.with(Techniques.Bounce)
+//                        .duration(2000)
+//                        .playOn(findViewById(R.id.add_meds_counter));
 
-                new CountDownTimer(5000, 1000) {
+                new CountDownTimer(2000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
-                        downCounter.setText("The window will close in: " + millisUntilFinished / 1000);
+                    //    downCounter.setText("The window will close in: " + millisUntilFinished / 1000);
                     }
 
                     public void onFinish() {
@@ -398,9 +398,9 @@ if(generalInfoObject != null)
     save_medication.setContext(getApplicationContext());
     save_medication.add_meds();
 
-    YoYo.with(Techniques.Bounce)
-            .duration(2000)
-            .playOn(findViewById(R.id.pro_save));
+//    YoYo.with(Techniques.Bounce)
+//            .duration(2000)
+//            .playOn(findViewById(R.id.pro_save));
 
     new CountDownTimer(5000, 1000) {
 
@@ -422,9 +422,9 @@ if(generalInfoObject != null)
 
     public void shake()
     {
-                 YoYo.with(Techniques.Shake)
-                .duration(300)
-                .playOn(findViewById(R.id.pro_save));
+//                 YoYo.with(Techniques.Shake)
+//                .duration(300)
+//                .playOn(findViewById(R.id.pro_save));
     }
 
     public void close_activity(View view) {
@@ -502,9 +502,9 @@ if(generalInfoObject != null)
         if(et_drugname.getText().toString().length()<1)
         {
             Toast.makeText(Add_medication.this,"Make sure name is filled......",Toast.LENGTH_SHORT).show();
-            YoYo.with(Techniques.Shake)
-                    .duration(300)
-                    .playOn(findViewById(R.id.et_drug_name));
+//            YoYo.with(Techniques.Shake)
+//                    .duration(300)
+//                    .playOn(findViewById(R.id.et_drug_name));
             return;
         }
 

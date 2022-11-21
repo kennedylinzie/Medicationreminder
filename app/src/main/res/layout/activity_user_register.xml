@@ -369,7 +369,6 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:inputType="numberDecimal"
-                    android:text="Membership number"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display4"
 
                     android:textColor="@color/black"
