@@ -8,13 +8,13 @@
         android:id="@+id/add_medication"
         android:title="Add Prescription"
          />
-    <item
-        android:id="@+id/add_notes"
-        android:title="Add notes"
-        />
+
     <item
         android:id="@+id/add_gurdian"
         android:title="Add Guardian"
         />
-
+    <item
+        android:id="@+id/add_notes"
+        android:title="Help"
+        />
 </menu>
