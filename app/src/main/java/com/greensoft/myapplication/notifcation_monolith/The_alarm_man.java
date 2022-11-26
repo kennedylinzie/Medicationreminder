@@ -52,7 +52,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
     private Handler handler = new Handler();
     private Runnable runnableCode;
     private TextToSpeech textToSpeech;
-    private String first_string = "Hello, the medication you will take is ";
+    private String first_string = "The medication you will take is ";
     private String second_string="";
     private Handler handler_speech = new Handler();
     private Runnable runnableCode_speech;
@@ -99,7 +99,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
             }
         });
 
-       speech();
+
        /// LinkedList<Dosage_saver_for_alarm_activity> cars = new LinkedList<Dosage_saver_for_alarm_activity>();
        // single_role_notification_model[] myData = null;
 
@@ -130,6 +130,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
                 recyclerView.setAdapter(sinlerolenotificationAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                 sendmessage();
+                speech();
 
 
 
@@ -227,11 +228,11 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
                 // Do something here on the main thread
                 // Repeat this the same runnable code block again another 2 seconds
                 // 'this' is referencing the Runnable object
-                textToSpeech.speak(first_string +""+second_string,TextToSpeech.QUEUE_FLUSH,null,null);
+                textToSpeech.speak(first_string +" "+second_string+" ",TextToSpeech.QUEUE_FLUSH,null,null);
                 handler_speech.postDelayed(this, 10000);
-                handler_speech.removeCallbacks(runnableCode_speech);
-                textToSpeech.stop();
-                textToSpeech.shutdown();
+                //handler_speech.removeCallbacks(runnableCode_speech);
+               // textToSpeech.stop();
+                //textToSpeech.shutdown();
             }
         };
         // Start the initial runnable task by posting through the handler
@@ -262,7 +263,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
         {
             //when permission is granted
             //create method
-                //send_sms();
+                send_sms();
 
 
 
@@ -317,10 +318,7 @@ public class The_alarm_man extends AppCompatActivity implements View.OnClickList
             textToSpeech.stop();
             textToSpeech.shutdown();
         }
-        if(textToSpeech != null){
-            textToSpeech.stop();
-            textToSpeech.shutdown();
-        }
+
 
         super.onDestroy();
     }

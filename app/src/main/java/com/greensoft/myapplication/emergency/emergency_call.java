@@ -63,7 +63,7 @@ public class emergency_call extends AppCompatActivity {
         counter_view = findViewById(R.id.em_counter);
         clock = findViewById(R.id.em_alarm);
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        permission();
+
 
         getWindow().setTitle("");
         //getActionBar().hide();
@@ -75,7 +75,7 @@ public class emergency_call extends AppCompatActivity {
         YoYo.with(Techniques.BounceInUp)
                 .duration(2000)
                 .playOn(findViewById(R.id.em_alarm_holder));
-
+        permission();
         /////////////////////
         handler_timer = new Handler();
         // Define the code block to be executed
@@ -193,7 +193,7 @@ public class emergency_call extends AppCompatActivity {
         {
             //when permission is granted
             //create method
-            //send_sms();
+           // send_sms();
         }else {
             //when permission is granted
             //request permission
@@ -217,9 +217,11 @@ public class emergency_call extends AppCompatActivity {
             Type foundlistType = new TypeToken<ArrayList<Gurdian>>(){}.getType();
             people_backup = gson.fromJson(json, foundlistType);
             String[] new_pips = new String[people_backup.size()];
+
             for (int i = 0; i < people_backup.size(); i++) {
                 new_pips[i] =  people_backup.get(i).getName();
                 String sphone = people_backup.get(i).getPhone_number().trim();
+
                 if(!sphone.equals(""))
                 {
 
@@ -228,7 +230,7 @@ public class emergency_call extends AppCompatActivity {
                     //send text
                     smsManager.sendTextMessage(sphone,null,"Hey "+ new_pips[i]+" "+shad.getFirst_name() +" has an emergency",null,null);
 
-                    Toast.makeText(getApplicationContext(),"sms send successfuly",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Sms sent successfuly",Toast.LENGTH_LONG).show();
 
                     // Toast.makeText(getApplicationContext(),"limit",Toast.LENGTH_LONG).show();
                 }else {

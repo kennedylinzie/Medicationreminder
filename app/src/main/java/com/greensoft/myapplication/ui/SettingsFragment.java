@@ -99,6 +99,8 @@ public class SettingsFragment extends Fragment {
         et_emerge = view.findViewById(R.id.et_chart_emergency_number);
         btn_save_emrge = view.findViewById(R.id.save_emerge);
         et_emerge.setText(shady.get_emergency_number(requireContext()));
+        //et_emerge.setText(shady.get_emergency_number(requireContext()));
+        String nn = shady.get_emergency_number(requireContext());
         btn_save_emrge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +108,7 @@ public class SettingsFragment extends Fragment {
                if(!phone.isEmpty()){
                        shady.save_emergency_number(requireContext(),phone);
                        et_emerge.setText(shady.get_emergency_number(requireContext()));
-                       Toast.makeText(getContext(), "The length is not valid", Toast.LENGTH_SHORT).show();
+                       Toast.makeText(getContext(), "Successfully", Toast.LENGTH_SHORT).show();
 
                }
             }
