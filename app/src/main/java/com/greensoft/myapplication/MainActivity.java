@@ -578,8 +578,10 @@ public class MainActivity extends AppCompatActivity implements ActionBottomDialo
                     finish();
                     //showBottomSheet();
                 }
-                if ("Add notes".equals(menuItem.getTitle())) {
-
+                if ("Help".equals(menuItem.getTitle())) {
+                     Intent goto_help = new Intent(getApplicationContext(),helpPage.class);
+                     startActivity(goto_help);
+                     finish();
                 }
                 if ("Add Guardian".equals(menuItem.getTitle())) {
                     Intent go_to_add = new Intent(MainActivity.this,Add_gurdian.class);

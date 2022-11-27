@@ -63,6 +63,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-vision:20.1.3'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
+    //using stable version
+    implementation 'com.github.barteksc:AndroidPdfViewerV1:1.6.0'
 
 
 }

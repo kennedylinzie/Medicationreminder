@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Help_page">
+    tools:context=".helpPage"
+    tools:ignore="MissingClass">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_height="wrap_content"
+    <com.github.barteksc.pdfviewer.PDFView
+        android:id="@+id/pdfView"
         android:layout_width="match_parent"
-        android:theme="@style/Theme.MedicationReminder.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/scrollBar"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width = "match_parent"
-            android:background="?attr/colorPrimary"
-              app:popupTheme="@style/Theme.MedicationReminder.PopupOverlay"
-            android:layout_height = "?attr/actionBarSize" />
+    <com.github.barteksc.pdfviewer.ScrollBar
+        android:id="@+id/scrollBar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:sb_handlerColor="@color/colorPrimaryDark" />
 
-  </com.google.android.material.appbar.AppBarLayout>
+    <Button
+        android:id="@+id/btnAction3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="344dp"
+        android:layout_weight="1"
+        android:background="@drawable/ic_cancel_specific"
+        android:onClick="close_window"
+        android:text=""
 
-  <include layout="@layout/content_help_page"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976" />
 
-  <com.google.android.material.floatingactionbutton.FloatingActionButton
-  android:id="@+id/fab"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_gravity="bottom|end"
-  android:layout_marginEnd="@dimen/fab_margin"
-  android:layout_marginBottom="16dp"
-  app:srcCompat="@android:drawable/ic_dialog_email" />
 
-  </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

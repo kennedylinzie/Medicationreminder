@@ -215,8 +215,8 @@ public class shared_persistence {
 //                                ,Bloodpressure,Email,Phone_number,Existing_illness,Location,Prescription,
 //                                Verified,Latitude,Longitude);
                        pref_manager.save_json(context,Prescription);
-                        pref_manager.save_json_user_prep(context,drugs);
-                   Toast.makeText(context, "Download successful", Toast.LENGTH_LONG).show();
+                       pref_manager.save_json_user_prep(context,drugs);
+                       Toast.makeText(context, "Download successful", Toast.LENGTH_LONG).show();
 //
 //
 //                        Intent intent_diag = new Intent(context, Lobby.class);
