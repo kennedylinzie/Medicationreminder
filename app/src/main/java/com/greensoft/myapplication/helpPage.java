@@ -20,7 +20,18 @@ public class helpPage extends AppCompatActivity {
         ScrollBar scrollBar = (ScrollBar) findViewById(R.id.scrollBar);
         pdfView.setScrollBar(scrollBar);
        // pdfView.fromFile(Res)
-        pdfView.fromAsset("helpthing.pdf").load();
+       // pdfView.fromAsset("helpthing.pdf").load();
+        pdfView.fromAsset("helpthing.pdf")
+                .pages(0, 2, 1, 3, 3, 3) // all pages are displayed by default
+                .enableSwipe(true)
+                .enableDoubletap(true)
+                .swipeVertical(false)
+                .defaultPage(1)
+                .showMinimap(true)
+                .enableAnnotationRendering(true)
+                .password(null)
+                .showPageWithAnimation(true)
+                .load();
 
 
     }
